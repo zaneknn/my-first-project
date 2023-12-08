@@ -21,3 +21,5 @@ function jolkaFormFunction(event) {
 
 let jolkaSerachForm = document.querySelector("#search-form");
 jolkaSerachForm.addEventListener(`submit`, jolkaFormFunction);
+
+searchCity("Fredrikstad");
