@@ -2,8 +2,10 @@ function fetchWeather(response) {
   let jolkaTemperatureElement = document.querySelector("#temperature");
   let temperature = response.data.temperature.current;
   let citySearch = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
 
   citySearch.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
   jolkaTemperatureElement.innerHTML = Math.round(temperature);
 }
 
