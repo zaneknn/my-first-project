@@ -16,15 +16,15 @@
 <body>
     <div class="jolka-app">
         <header>
-            <form class="search-form">
-                <input type="search" placeholder="Enter a city.." class="jolka-city-search" />
+            <form class="jolka-form" id="search-form">
+                <input type="search" placeholder="Enter a city.." required id="jolka-search-input"
+                    class="jolka-city-search" />
                 <input type="submit" value="Search" class="jolka-form-button" />
-            </form>
         </header>
         <main>
             <div class="jolka-app-data">
                 <div>
-                    <h1 class="jolka-app-city">Paris</h1>
+                    <h1 class="jolka-app-city" id="city">Paris</h1>
                     <p class="jolka-app-details">
                         Tuesday 14:49, scattered clouds
                         <br />
@@ -49,6 +49,7 @@
             </div>
         </footer>
     </div>
+    <script src="jolka.js"></script>
 </body>
 
 </html>
