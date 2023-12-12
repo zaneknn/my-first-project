@@ -3,9 +3,13 @@ function fetchWeather(response) {
   let temperature = response.data.temperature.current;
   let citySearch = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
 
   citySearch.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
   jolkaTemperatureElement.innerHTML = Math.round(temperature);
 }
 
