@@ -12,6 +12,32 @@ function fetchWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   jolkaTemperatureElement.innerHTML = Math.round(temperature);
 }
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let day = date.getDay();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let formattedDay = days[day];
+  return `${formattedDay} ${hours}:${minutes}`;
+}
 
 function searchCity(city) {
   let apiKey = `ta8d0cd5f43b6fe4f1cd0019401obcd1`;
@@ -24,6 +50,11 @@ function jolkaFormFunction(event) {
 
   searchCity(jolkaSearchInput.value);
 }
+
+let currentDateELement = document.querySelector("#current-date");
+let currentDate = new Date();
+
+currentDateELement.innerHTML = formatDate(currentDate);
 
 let jolkaSerachForm = document.querySelector("#search-form");
 jolkaSerachForm.addEventListener(`submit`, jolkaFormFunction);
