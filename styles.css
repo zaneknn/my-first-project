@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  background: #3c3c3c;
   font-family: "Figtree", sans-serif;
 }
 a {
@@ -66,8 +66,8 @@ main {
   display: flex;
 }
 .jolka-app-icon {
-  font-size: 38px;
-  margin-top: 10px;
+  height: 78px;
+  width: 78px;
 }
 .jolka-app-temperature {
   font-size: 60px;

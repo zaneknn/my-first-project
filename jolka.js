@@ -5,8 +5,14 @@ function fetchWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
+  let currentDateELement = document.querySelector("#current-date");
+  let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#jolka-app-icon");
+
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="jolka-app-icon">`;
 
   citySearch.innerHTML = response.data.city;
+  currentDateELement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
@@ -15,16 +21,6 @@ function fetchWeather(response) {
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
   let days = [
     "Sunday",
     "Monday",
@@ -34,9 +30,12 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
+  let day = days[date.getDay()];
 
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
@@ -50,11 +49,6 @@ function jolkaFormFunction(event) {
 
   searchCity(jolkaSearchInput.value);
 }
-
-let currentDateELement = document.querySelector("#current-date");
-let currentDate = new Date();
-
-currentDateELement.innerHTML = formatDate(currentDate);
 
 let jolkaSerachForm = document.querySelector("#search-form");
 jolkaSerachForm.addEventListener(`submit`, jolkaFormFunction);
