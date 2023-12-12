@@ -15,7 +15,7 @@ function fetchWeather(response) {
   currentDateELement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  windElement.innerHTML = `${response.data.wind.speed}m/s`;
   jolkaTemperatureElement.innerHTML = Math.round(temperature);
 }
 function formatDate(date) {
