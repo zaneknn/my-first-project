@@ -17,6 +17,8 @@ function fetchWeather(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${response.data.wind.speed}m/s`;
   jolkaTemperatureElement.innerHTML = Math.round(temperature);
+
+  getForecast(response.data.city);
 }
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -44,7 +46,13 @@ function searchCity(city) {
   axios.get(apiUrl).then(fetchWeather);
 }
 
-function jolkaForecast() {
+function getForecast(city) {
+  let apiKey = "ta8d0cd5f43b6fe4f1cd0019401obcd1";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(jolkaForecast);
+}
+function jolkaForecast(response) {
+  console.log(response.data);
   let days = [`Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
   let forecastHtml = "";
   days.forEach(function (day) {
@@ -79,4 +87,3 @@ let jolkaSerachForm = document.querySelector("#search-form");
 jolkaSerachForm.addEventListener(`submit`, jolkaFormFunction);
 
 searchCity("Fredrikstad");
-jolkaForecast();
