@@ -107,14 +107,15 @@ main {
   color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
   line-height: 20px;
-  margin-bottom: 10px;
 }
 .jolka-forecast-temperature-min {
   opacity: 0.6;
 }
 .jolka-forecast-icon {
-  font-size: 38px;
-  text-align: center;
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
 }
 footer {
   border-top: 1px solid rgb(19, 32, 32, 0.3);
